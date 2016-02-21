@@ -1,0 +1,12 @@
+dontknow random instructions hello bye bye
+insert clothing shirt 20.50 1 1
+insert electronics PS3 300 1 5.2 F NM
+insert electronics PS4 400 1 5 F TX
+insert groceries cabbage 2.00 5 1 P
+insert groceries pork 5.00 5 5 P
+insert clothing shirt 20.50 1 1
+insert clothing shirt 20.50 1 1
+delete cabbage
+update pork 10
+search shirt
+print
