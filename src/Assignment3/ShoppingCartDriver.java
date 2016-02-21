@@ -18,9 +18,15 @@ public class ShoppingCartDriver
 	{
 
 	  static ArrayList<String> states;
+	  static ArrayList<String> inst;
+	  static ArrayList<String> state;
+	  static ArrayList<String> category;
 	  public static void main(String[] args) 
 	  {
 		  states = new ArrayList<String>(Arrays.asList("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN","IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH","NJ","NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "UT", "VT", "VA", "WA", "WV","WI", "WY"));
+		  inst = new ArrayList<String>(Arrays.asList("print","insert","update","search", "delete"));
+		  states = new ArrayList<String>(Arrays.asList("TX", "NM","VA", "AZ", "AK"));
+		  category = new ArrayList<String>(Arrays.asList("electronics", "groceries", "clothing"));		  
 		  ArrayList<Item> shoppingCart = new ArrayList<Item>(); 
 		  if (args.length != 1) 
 			{
@@ -63,9 +69,7 @@ public class ShoppingCartDriver
 	  
 	  public static void processInput(String line, ArrayList<Item> shoppingList)
 	  {
-		  ArrayList<String> inst = new ArrayList<String>(Arrays.asList("print","insert","update","search", "delete"));
-		  ArrayList<String> states = new ArrayList<String>(Arrays.asList("TX", "NM","VA", "AZ", "AK"));
-		  ArrayList<String> category = new ArrayList<String>(Arrays.asList("electronics", "groceries", "clothing"));
+
 		  Iterator<Item> i = shoppingList.iterator();
 		  String instructions[] = line.toLowerCase().split(" +");
 		  int instruction = inst.indexOf(instructions[0].toLowerCase());
@@ -101,7 +105,7 @@ public class ShoppingCartDriver
 				 else{
 					 shipping = false;
 				 }
-				 if(states.indexOf(instructions[5].toUpperCase())== -1)
+				 if(state.indexOf(instructions[5].toUpperCase())== -1)
 				 {
 					 tax = false;
 				 }
