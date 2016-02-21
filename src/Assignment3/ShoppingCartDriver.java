@@ -179,13 +179,9 @@ public class ShoppingCartDriver
 			  //System.out.println("Line is Empty");
 			  return false;
 		  }
-<<<<<<< HEAD
 		  String token[] = line.split(" +");
 		  token[0] = token[0].toLowerCase();
-=======
-		  String token[] = line.toLowerCase().split(" +");
 		  ArrayList<String> states = new ArrayList<String>(Arrays.asList("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN","IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH","NJ","NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "UT", "VT", "VA", "WA", "WV","WI", "WY"));
->>>>>>> f2e03f3a6e1d4833ee11aa275775d0dbddc4d267
 		  //check for operations
 		  if(token[0].equals("insert")){
 			  //check for categories
