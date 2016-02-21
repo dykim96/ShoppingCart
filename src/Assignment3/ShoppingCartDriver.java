@@ -226,11 +226,11 @@ public class ShoppingCartDriver
 						  }
 						  //check optional fields
 						  if(token[1].equals("electronics")){
-							  if(token.length == 8){
+							  if(token.length == 8){//check for fragility
 								  token[6] = token[6].toLowerCase();
 								  token[7] = token[7].toUpperCase();
 								  if(token[6].equals("f") || token[6].equals("nf")){
-									  if(!states.contains(token[7])){
+									  if(!states.contains(token[7])){//check if states exist
 										  System.out.println("Such state doesn't exist");
 										  return false;
 									  }
@@ -249,12 +249,9 @@ public class ShoppingCartDriver
 							  }
 						  }
 						  else if(token[1].equals("groceries")){
-							  if(token.length == 7){
+							  if(token.length == 7){//check for perishability
 								  token[6] = token[6].toLowerCase();
-								  if(token[6].equals("p") || token[6].equals("np")){
-									  
-								  }
-								  else{
+								  if(!token[6].equals("p") && !token[6].equals("np")){
 									  System.out.println("Must indicate if it is P(perishable) or NP(nonperishable)");
 									  return false;
 								  }
