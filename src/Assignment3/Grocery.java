@@ -27,4 +27,21 @@ public class Grocery extends Item {
 		final_price *= ((double)quantity);
 		return final_price;
 	}
+	
+	void printItemAttributes () 
+	{
+		System.out.println("\nName : " + this.name);
+		System.out.println("Category : Grocery");
+		System.out.println("Weight : " + this.weight + "lbs");
+		System.out.printf("Price : $%.2f\n", this.price);
+		System.out.println("Quantity : " + this.quantity);
+		if(perishable){
+			System.out.print("Perishable");
+		}
+		else{
+			System.out.print("Nonperishable");
+		}
+		System.out.println(" item");
+		System.out.printf("Total Price : $%.2f\n", calculatePrice());
+	}
 }

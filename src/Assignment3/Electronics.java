@@ -37,4 +37,27 @@ public class Electronics extends Item
 		final_price *= ((double)quantity);
 		return final_price;
 	}
+	
+	void printItemAttributes () 
+	{
+		System.out.println("\nName : " + this.name);
+		System.out.println("Category : Grocery");
+		System.out.println("Weight : " + this.weight + "lbs");
+		System.out.printf("Price : $%.2f\n", this.price);
+		System.out.println("Quantity : " + this.quantity);
+		if(fragile){
+			System.out.print("Fragile");
+		}
+		else{
+			System.out.print("Non-fragile");
+		}
+		System.out.println(" item");
+		if(taxExempt){
+			System.out.println("Your destination has no sales tax");
+		}
+		else{
+			System.out.println("Additional sales tax : 10%");
+		}
+		System.out.printf("Total Price : $%.2f\n", calculatePrice());
+	}
 }
