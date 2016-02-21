@@ -6,8 +6,8 @@ Name2: Chan-Young Kim
 
 EID2: ck23586
 
-Main method: CCC.java
+Main method: ShoppingCartDriver.java
 
-Analysis: which file... it is okey to put analysis and design in one file, just tell us which file(s)
+Analysis: A3_ck23586_dk24338.pdf
 
-Design: which file(s)  
+Design: A3_ck23586_dk24338.pdf
