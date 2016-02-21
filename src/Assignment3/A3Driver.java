@@ -29,4 +29,11 @@ public class A3Driver
 		}		
 	  }
 
+	  public boolean checkFormat(String line){
+		  if(line.trim().isEmpty()){
+			  //System.out.println("Line is Empty");
+			  return false;
+		  }
+		  return true;
+	  }
 }
