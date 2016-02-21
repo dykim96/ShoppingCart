@@ -1,3 +1,9 @@
+/*  Assignment 3: Shopping Cart
+ *  Process Transaction
+ *  Section: 16185
+ *  Name: Chan-Young Kim, Doyoung Kim
+ *  UTEID: ck23586, dk24338
+ */
 package Assignment3;
 
 public class Electronics extends Item 
