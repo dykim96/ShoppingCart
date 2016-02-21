@@ -9,7 +9,7 @@ public class Grocery extends Item {
 		perishable = false;
 	}
 	
-	Grocery(String name, double price, long quantity, double weight, boolean perishable){
+	Grocery(String name, double price, long quantity, long weight, boolean perishable){
 		super(name, price, quantity, weight);
 		this.perishable = perishable;
 	}
@@ -19,7 +19,7 @@ public class Grocery extends Item {
 	{
 		double final_price = 0;
 		// Insert price calculation here
-		final_price = 20.0 * weight;
+		final_price = 20.0 * (double)weight;
 		if(perishable){//premium shipping
 			final_price *= 1.2;
 		}

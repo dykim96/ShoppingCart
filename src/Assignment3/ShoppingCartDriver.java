@@ -148,20 +148,70 @@ public class ShoppingCartDriver
 		  }
 	  }
 
-	  public boolean checkFormat(String line){
+	  public static boolean checkFormat(String line){
 		  //check if line is empty
 		  if(line.trim().isEmpty()){
 			  //System.out.println("Line is Empty");
 			  return false;
 		  }
-		  String token[] = line.toLowerCase().split(" +");
+		  String token[] = line.split(" +");
+		  token[0] = token[0].toLowerCase();
 		  //check for operations
 		  if(token[0].equals("insert")){
 			  //check for categories
 			  if(token.length > 1){
+				  token[1] = token[1].toLowerCase();
 				  if(token[1].equals("groceries") || token[1].equals("electronics") || token[1].equals("clothing")){
-					  if(token.length > 2){
-						  
+					  if(token.length >= 6){
+						  //check price
+						  try{
+							  Double.parseDouble(token[3]);
+						  }
+						  catch(java.lang.NumberFormatException e){
+							  System.out.println("Wrong price : price must be a double");
+							  return false;
+						  }
+						  //check quantity
+						  try{
+							  Long.parseLong(token[4]);
+						  }
+						  catch(java.lang.NumberFormatException e){
+							  System.out.println("Wrong quantity : quantity must be an integer");
+							  return false;
+						  }
+						  //check weight
+						  try{
+							  Long.parseLong(token[5]);
+						  }
+						  catch(java.lang.NumberFormatException e){
+							  System.out.println("Wrong weight : weight must be an integer");
+							  return false;
+						  }
+						  //check optional fields
+						  if(token[1].equals("electronics")){
+							  if(token.length == 8){
+								  
+							  }
+							  else{
+								  if(token.length > 8)
+									  System.out.println("Invalid transaction : too much tokens");
+								  else
+									  System.out.println("Invalid transaction : not enough tokens");
+								  return false;
+							  }
+						  }
+						  else if(token[1].equals("clothing")){
+							  if(token.length == 7){
+								  
+							  }
+							  else{
+								  if(token.length > 7)
+									  System.out.println("Invalid transaction : too much tokens");
+								  else
+									  System.out.println("Invalid transaction : not enough tokens");
+								  return false;
+							  }
+						  }
 					  }
 					  else{
 						  System.out.println("Invalid transaction : not enough tokens");
@@ -186,7 +236,7 @@ public class ShoppingCartDriver
 					  Long.parseLong(token[2]);
 				  }
 				  catch (java.lang.NumberFormatException e){
-					  System.out.println("Wrong quantity : quantity must be an integer or long");
+					  System.out.println("Wrong quantity : quantity must be an integer");
 					  return false;
 				  }
 			  }

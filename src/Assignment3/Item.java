@@ -6,17 +6,17 @@ public class Item
 	protected String name;
 	protected double price;
 	protected long quantity;
-	protected double weight;
+	protected long weight;
 
 // You will need a constructor (Why?). Create it here.
 	Item(){
 		name = "";
 		price = 0.0;
 		quantity = 0;
-		weight = 0.0;
+		weight = 0;
 	}
 	
-	Item(String name, double price, long quantity, double weight){
+	Item(String name, double price, long quantity, long weight){
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;
@@ -39,7 +39,7 @@ public class Item
 		return this.price;
 	}
 	
-	double getWeight(){
+	long getWeight(){
 		return this.weight;
 	}
 	
@@ -47,7 +47,7 @@ public class Item
 	{
 		double final_price = 0;
 		// Insert price calculation here
-		final_price = (20.0 * weight + price)*((double)quantity);
+		final_price = (20.0 * (double)weight + price)*((double)quantity);
 		return final_price;
 	}
 	

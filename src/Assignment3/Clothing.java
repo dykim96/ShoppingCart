@@ -8,7 +8,7 @@ public class Clothing extends Item
 		super();
 	}
 	
-	Clothing(String name, double price, long quantity, double weight){
+	Clothing(String name, double price, long quantity, long weight){
 		super(name, price, quantity, weight);
 	}
 	
@@ -16,7 +16,7 @@ public class Clothing extends Item
 	{
 		double final_price = 0;
 		// Insert price calculation here
-		final_price = (20.0 * weight + price * 1.1)*((double)quantity);
+		final_price = (20.0 * (double)weight + price * 1.1)*((double)quantity);
 		return final_price;
 	}
 	

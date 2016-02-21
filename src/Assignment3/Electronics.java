@@ -13,7 +13,7 @@ public class Electronics extends Item
 		taxExempt = false;
 	}
 	
-	Electronics(String name, double price, long quantity, double weight, boolean fragile, boolean taxExempt){
+	Electronics(String name, double price, long quantity, long weight, boolean fragile, boolean taxExempt){
 		super(name, price, quantity, weight);
 		this.fragile = fragile;
 		this.taxExempt = taxExempt;
@@ -24,7 +24,7 @@ public class Electronics extends Item
 	{
 		double final_price = 0;
 		// Insert price calculation here
-		final_price = 20.0 * weight;
+		final_price = 20.0 * (double)weight;
 		if(fragile){//premium shipping
 			final_price *= 1.2;
 		}
