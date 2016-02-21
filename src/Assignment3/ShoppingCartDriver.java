@@ -1,34 +1,58 @@
 package Assignment3;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
+
+
 
 public class ShoppingCartDriver 
 	{
 
 	  public static void main(String[] args) 
 	  {
-		// TODO Auto-generated method stub
-		
-		//Open file; file name specified in args (command line)
-		
-		//Parse input, take appropriate actions.
-		
-		//Stub for arraylist.
-		ArrayList<Item> shoppingCart = new ArrayList<Item>(); 
-		
-		// General code example for how to iterate an array list. You will have to modify this heavily, to suit your needs.
-		Iterator<Item> i = shoppingCart.iterator();
-		while (i.hasNext()) 
-		{
-			Item temp = i.next();
-			temp.calculatePrice(); 
-			temp.printItemAttributes();
-		}
-			//This (above) works because of polymorphism: a determination is made at runtime, 
-			//based on the inherited class type, as to which method is to be invoked. Eg: If it is an instance
-			// of Grocery, it will invoke the calculatePrice () method defined in Grocery.
-	
+		  ArrayList<Item> shoppingCart = new ArrayList<Item>(); 
+		  if (args.length != 1) 
+			{
+				System.err.println ("Error: Incorrect number of command line arguments");
+				System.exit(-1);
+			}
+			try 
+			{
+				FileReader freader = new FileReader(args[0]);
+				BufferedReader reader = new BufferedReader(freader);
+				
+				for (String s = reader.readLine(); s != null; s = reader.readLine()) 
+				{
+					if(checkFormat(s))
+					{
+						processInput(s, shoppingCart);
+					}
+
+				}
+				reader.close();
+			} 
+			catch (FileNotFoundException e) 
+			{
+				System.err.println ("Error: File not found. Exiting...");
+				e.printStackTrace();
+				System.exit(-1);
+			} catch (IOException e) 
+			{
+				System.err.println ("Error: IO exception. Exiting...");
+				e.printStackTrace();
+				System.exit(-1);
+			}
 	  }
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 	  public static void processInput(String line, ArrayList<Item> shoppingList)
 	  {
 		  ArrayList<String> inst = new ArrayList<String>(Arrays.asList("print","insert","update","search", "delete"));
@@ -52,7 +76,7 @@ public class ShoppingCartDriver
 		  {
 			  String name;
 			  double price;
-			  double weight;
+			  long weight;
 			  long quantity;
 			  boolean tax;
 			  boolean shipping;
@@ -62,7 +86,7 @@ public class ShoppingCartDriver
 				 name = instructions[2];
 				 price = Double.parseDouble(instructions[2]);
 				 quantity = Long.parseLong(instructions[3]);
-				 weight = Double.parseDouble(instructions[4]);
+				 weight = Long.parseLong(instructions[4]);
 				 if(instructions[5].toLowerCase().equals("f")){
 					 shipping = true;
 				 }
@@ -84,7 +108,7 @@ public class ShoppingCartDriver
 			  		name = instructions[2];
 					 price = Double.parseDouble(instructions[2]);
 					 quantity = Long.parseLong(instructions[3]);
-					 weight = Double.parseDouble(instructions[4]);
+					 weight = Long.parseLong(instructions[4]);
 					 if(instructions[5].toLowerCase().equals("p")){
 						 shipping = true;
 					 }
@@ -98,7 +122,7 @@ public class ShoppingCartDriver
 			  		name = instructions[2];
 					 price = Double.parseDouble(instructions[2]);
 					 quantity = Long.parseLong(instructions[3]);
-					 weight = Double.parseDouble(instructions[4]);
+					 weight = Long.parseLong(instructions[4]);
 					 shoppingList.add(new Clothing(name, price, quantity, weight));
 			  	}
 		  }
@@ -149,13 +173,14 @@ public class ShoppingCartDriver
 		  }
 	  }
 
-	  public boolean checkFormat(String line){
+	  public static boolean checkFormat(String line){
 		  //check if line is empty
 		  if(line.trim().isEmpty()){
 			  //System.out.println("Line is Empty");
 			  return false;
 		  }
 		  String token[] = line.toLowerCase().split(" +");
+		  ArrayList<String> states = new ArrayList<String>(Arrays.asList("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN","IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH","NJ","NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "UT", "VT", "VA", "WA", "WV","WI", "WY"));
 		  //check for operations
 		  if(token[0].equals("insert")){
 			  //check for categories
