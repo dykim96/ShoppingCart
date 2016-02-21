@@ -29,12 +29,13 @@ public class ShoppingCartDriver
 			// of Grocery, it will invoke the calculatePrice () method defined in Grocery.
 	
 	  }
-	  public static void processInput(String[] instructions, ArrayList<Item> shoppingList)
+	  public static void processInput(String line, ArrayList<Item> shoppingList)
 	  {
 		  ArrayList<String> inst = new ArrayList<String>(Arrays.asList("print","insert","update","search", "delete"));
 		  ArrayList<String> states = new ArrayList<String>(Arrays.asList("TX", "NM","VA", "AZ", "AK"));
 		  ArrayList<String> category = new ArrayList<String>(Arrays.asList("electronics", "groceries", "clothing"));
 		  Iterator<Item> i = shoppingList.iterator();
+		  String instructions[] = line.toLowerCase().split(" +");
 		  int instruction = inst.indexOf(instructions[0].toLowerCase());
 		  if(instruction == 0)								// instruction is print
 		  {		
