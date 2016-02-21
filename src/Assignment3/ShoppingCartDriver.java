@@ -11,8 +11,10 @@ import java.util.*;
 public class ShoppingCartDriver 
 	{
 
+	  static ArrayList<String> states;
 	  public static void main(String[] args) 
 	  {
+		  states = new ArrayList<String>(Arrays.asList("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN","IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH","NJ","NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "UT", "VT", "VA", "WA", "WV","WI", "WY"));
 		  ArrayList<Item> shoppingCart = new ArrayList<Item>(); 
 		  if (args.length != 1) 
 			{
@@ -181,7 +183,6 @@ public class ShoppingCartDriver
 		  }
 		  String token[] = line.split(" +");
 		  token[0] = token[0].toLowerCase();
-		  ArrayList<String> states = new ArrayList<String>(Arrays.asList("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN","IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH","NJ","NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "UT", "VT", "VA", "WA", "WV","WI", "WY"));
 		  //check for operations
 		  if(token[0].equals("insert")){
 			  //check for categories
@@ -216,7 +217,18 @@ public class ShoppingCartDriver
 						  //check optional fields
 						  if(token[1].equals("electronics")){
 							  if(token.length == 8){
-								  
+								  token[6] = token[6].toLowerCase();
+								  token[7] = token[7].toUpperCase();
+								  if(token[6].equals("f") || token[6].equals("nf")){
+									  if(!states.contains(token[7])){
+										  System.out.println("Such state doesn't exist");
+										  return false;
+									  }
+								  }
+								  else{
+									  System.out.println("Must indicate if it is F(fragile) or NF(non-fragile)");
+									  return false;
+								  }
 							  }
 							  else{
 								  if(token.length > 8)
@@ -226,9 +238,16 @@ public class ShoppingCartDriver
 								  return false;
 							  }
 						  }
-						  else if(token[1].equals("clothing")){
+						  else if(token[1].equals("groceries")){
 							  if(token.length == 7){
-								  
+								  token[6] = token[6].toLowerCase();
+								  if(token[6].equals("p") || token[6].equals("np")){
+									  
+								  }
+								  else{
+									  System.out.println("Must indicate if it is P(perishable) or NP(nonperishable)");
+									  return false;
+								  }
 							  }
 							  else{
 								  if(token.length > 7)
