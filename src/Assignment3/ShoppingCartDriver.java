@@ -99,8 +99,77 @@ public class ShoppingCartDriver
 	  }
 
 	  public boolean checkFormat(String line){
+		  //check if line is empty
 		  if(line.trim().isEmpty()){
 			  //System.out.println("Line is Empty");
+			  return false;
+		  }
+		  String token[] = line.toLowerCase().split(" +");
+		  //check for operations
+		  if(token[0].equals("insert")){
+			  //check for categories
+			  if(token.length > 1){
+				  if(token[1].equals("groceries") || token[1].equals("electronics") || token[1].equals("clothing")){
+					  if(token.length > 2){
+						  
+					  }
+					  else{
+						  System.out.println("Invalid transaction : not enough tokens");
+						  return false;
+					  }
+				  }
+				  else{
+					  System.out.println("Wrong category!");
+					  return false;
+				  }
+			  }
+			  else{
+				  System.out.println("Invalid transaction : not enough tokens");
+				  return false;
+			  }
+		  }
+		  else if(token[0].equals("update")){
+			  //check if it has 3 tokens
+			  if(token.length == 3){
+				  //check if quantity is in right format
+				  try{
+					  Long.parseLong(token[2]);
+				  }
+				  catch (java.lang.NumberFormatException e){
+					  System.out.println("Wrong quantity : quantity must be an integer or long");
+					  return false;
+				  }
+			  }
+			  else{
+				  if(token.length > 3)
+					  System.out.println("Invalid transaction : too much tokens");
+				  else
+					  System.out.println("Invalid transaction : not enough tokens");
+				  return false;
+			  }
+		  }
+		  else if(token[0].equals("delete") || token[0].equals("search")){
+			  //check if it has 2 tokens
+			  if(token.length != 2){
+				  if(token.length > 2)
+					  System.out.println("Invalid transaction : too much tokens");
+				  else
+					  System.out.println("Invalid transaction : not enough tokens");
+				  return false;
+			  }
+		  }
+		  else if(token[0].equals("print")){
+			  //check if it has 1 token
+			  if(token.length != 1){
+				  if(token.length > 1)
+					  System.out.println("Invalid transaction : too much tokens");
+				  else
+					  System.out.println("Invalid transaction : not enough tokens");
+				  return false;
+			  }
+		  }
+		  else{
+			  System.out.println("Wrong operation!");
 			  return false;
 		  }
 		  return true;
