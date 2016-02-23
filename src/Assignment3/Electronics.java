@@ -47,7 +47,7 @@ public class Electronics extends Item
 	void printItemAttributes () 
 	{
 		System.out.println("\nName : " + this.name);
-		System.out.println("Category : Grocery");
+		System.out.println("Category : Electronics");
 		System.out.println("Weight : " + this.weight + "lbs");
 		System.out.printf("Price : $%.2f\n", this.price);
 		System.out.println("Quantity : " + this.quantity);
