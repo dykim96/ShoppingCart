@@ -23,9 +23,9 @@ public class A3Driver
 	  static ArrayList<String> category;
 	  public static void main(String[] args) 
 	  {
-		  states = new ArrayList<String>(Arrays.asList("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN","IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH","NJ","NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "UT", "VT", "VA", "WA", "WV","WI", "WY"));
+		  states = new ArrayList<String>(Arrays.asList("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN","IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH","NJ","NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV","WI", "WY"));
 		  inst = new ArrayList<String>(Arrays.asList("print","insert","update","search", "delete"));
-		  states = new ArrayList<String>(Arrays.asList("TX", "NM","VA", "AZ", "AK"));
+		  state = new ArrayList<String>(Arrays.asList("TX", "NM","VA", "AZ", "AK"));
 		  category = new ArrayList<String>(Arrays.asList("electronics", "groceries", "clothing"));		  
 		  ArrayList<Item> shoppingCart = new ArrayList<Item>(); 
 		  if (args.length != 1) 
@@ -82,7 +82,7 @@ public class A3Driver
 				temp.printItemAttributes();
 				totalPrice+= temp.calculatePrice();
 			}
-			System.out.printf("Total Price is %.2f\n", totalPrice);
+			System.out.printf("Total Price is $%.2f\n", totalPrice);
 		  }
 		  else if(instruction == 1)							// instruction is insert
 		  {
@@ -96,16 +96,16 @@ public class A3Driver
 			  if(categ == 0)								// item is electronics
 			  {
 				 name = instructions[2];
-				 price = Double.parseDouble(instructions[2]);
-				 quantity = Long.parseLong(instructions[3]);
-				 weight = Long.parseLong(instructions[4]);
-				 if(instructions[5].toLowerCase().equals("f")){		//check if fragile
+				 price = Double.parseDouble(instructions[3]);
+				 quantity = Long.parseLong(instructions[4]);
+				 weight = Long.parseLong(instructions[5]);
+				 if(instructions[6].toLowerCase().equals("f")){		//check if fragile
 					 shipping = true;
 				 }
 				 else{
 					 shipping = false;
 				 }
-				 if(state.indexOf(instructions[5].toUpperCase())== -1)		//check the destination for tax purposes
+				 if(state.indexOf(instructions[7].toUpperCase())== -1)		//check the destination for tax purposes
 				 {
 					 tax = false;
 				 }
@@ -118,10 +118,10 @@ public class A3Driver
 			  	else if(categ ==1)						// item is groceries
 			  	{
 			  		name = instructions[2];
-					 price = Double.parseDouble(instructions[2]);
-					 quantity = Long.parseLong(instructions[3]);
-					 weight = Long.parseLong(instructions[4]);
-					 if(instructions[5].toLowerCase().equals("p")){						//check if perishable
+					 price = Double.parseDouble(instructions[3]);
+					 quantity = Long.parseLong(instructions[4]);
+					 weight = Long.parseLong(instructions[5]);
+					 if(instructions[6].toLowerCase().equals("p")){						//check if perishable
 						 shipping = true;
 					 }
 					 else{
@@ -132,9 +132,9 @@ public class A3Driver
 			  	else									//item is clothing
 			  	{
 			  		name = instructions[2];
-					 price = Double.parseDouble(instructions[2]);
-					 quantity = Long.parseLong(instructions[3]);
-					 weight = Long.parseLong(instructions[4]);
+					 price = Double.parseDouble(instructions[3]);
+					 quantity = Long.parseLong(instructions[4]);
+					 weight = Long.parseLong(instructions[5]);
 					 shoppingList.add(new Clothing(name, price, quantity, weight));
 			  	}
 		  }
@@ -145,7 +145,7 @@ public class A3Driver
 				  if(thing.getName().equals(instructions[1]))
 				  {
 					  thing.setQuantity(Long.parseLong(instructions[2]));
-					  System.out.printf("Item: %s new quantity : %l\n", thing.getName(), thing.getQuantity());
+					  System.out.printf("Item: %s new quantity : %d\n", thing.getName(), thing.getQuantity());
 					  return;
 				  }
 			  }
@@ -161,7 +161,7 @@ public class A3Driver
 					  total++;
 				  }
 			  }
-			  System.out.printf("number of object %l\n", total);
+			  System.out.printf("number of %s: %d\n",instructions[1], total);
 		  }
 		  else if(instruction == 4)							//operation delete
 		  {
@@ -177,11 +177,11 @@ public class A3Driver
 						deletion++;
 					}
 				}
-				System.out.printf("Item deleted %l times", deletion);
+				System.out.printf("%s deleted %d times\n",instructions[1], deletion);
 		  }
 		  else
 		  {
-			  System.out.println("error, unknown operation");
+			  System.out.println("error, unknown operation\n");
 		  }
 	  }
 
