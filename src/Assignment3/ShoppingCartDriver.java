@@ -202,7 +202,11 @@ public class ShoppingCartDriver
 					  if(token.length >= 6){
 						  //check price
 						  try{
-							  Double.parseDouble(token[3]);
+							  double price = Double.parseDouble(token[3]);
+							  if(price < 0.0){
+								  System.out.println("Price cannot be negative");
+								  return false;
+							  }
 						  }
 						  catch(java.lang.NumberFormatException e){
 							  System.out.println("Wrong price : price must be a double");
@@ -210,7 +214,15 @@ public class ShoppingCartDriver
 						  }
 						  //check quantity
 						  try{
-							  Long.parseLong(token[4]);
+							  long quantity = Long.parseLong(token[4]);
+							  if(quantity < 0){
+								  System.out.println("Quantity cannot be negative");
+								  return false;
+							  }
+							  else if(quantity == 0){
+								  System.out.println("Quantity is 0. Ignore the line.");
+								  return false;
+							  }
 						  }
 						  catch(java.lang.NumberFormatException e){
 							  System.out.println("Wrong quantity : quantity must be an integer");
@@ -218,7 +230,11 @@ public class ShoppingCartDriver
 						  }
 						  //check weight
 						  try{
-							  Long.parseLong(token[5]);
+							  long weight = Long.parseLong(token[5]);
+							  if(weight < 0){
+								  System.out.println("Weight cannot be negative");
+								  return false;
+							  }
 						  }
 						  catch(java.lang.NumberFormatException e){
 							  System.out.println("Wrong weight : weight must be an integer");
@@ -285,7 +301,11 @@ public class ShoppingCartDriver
 			  if(token.length == 3){
 				  //check if quantity is in right format
 				  try{
-					  Long.parseLong(token[2]);
+					  long quantity = Long.parseLong(token[2]);
+					  if(quantity < 0){
+						  System.out.println("Quantity cannot be negative");
+						  return false;
+					  }
 				  }
 				  catch (java.lang.NumberFormatException e){
 					  System.out.println("Wrong quantity : quantity must be an integer");
