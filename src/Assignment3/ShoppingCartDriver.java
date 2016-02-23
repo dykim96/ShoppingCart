@@ -99,13 +99,13 @@ public class ShoppingCartDriver
 				 price = Double.parseDouble(instructions[2]);
 				 quantity = Long.parseLong(instructions[3]);
 				 weight = Long.parseLong(instructions[4]);
-				 if(instructions[5].toLowerCase().equals("f")){
+				 if(instructions[5].toLowerCase().equals("f")){		//check if fragile
 					 shipping = true;
 				 }
 				 else{
 					 shipping = false;
 				 }
-				 if(state.indexOf(instructions[5].toUpperCase())== -1)
+				 if(state.indexOf(instructions[5].toUpperCase())== -1)		//check the destination for tax purposes
 				 {
 					 tax = false;
 				 }
@@ -121,7 +121,7 @@ public class ShoppingCartDriver
 					 price = Double.parseDouble(instructions[2]);
 					 quantity = Long.parseLong(instructions[3]);
 					 weight = Long.parseLong(instructions[4]);
-					 if(instructions[5].toLowerCase().equals("p")){
+					 if(instructions[5].toLowerCase().equals("p")){						//check if perishable
 						 shipping = true;
 					 }
 					 else{
