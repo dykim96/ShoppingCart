@@ -6,7 +6,7 @@ Name2: Chan-Young Kim
 
 EID2: ck23586
 
-Main method: ShoppingCartDriver.java
+Main method: A3Driver.java
 
 Analysis: A3_ck23586_dk24338.pdf
 

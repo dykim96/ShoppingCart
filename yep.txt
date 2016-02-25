@@ -1,4 +1,8 @@
 dontknow random instructions hello bye bye
+insert clothing shirt 0 0 0
+insert clothing shirt -10 0 0
+insert clothing shirt 10 -1 0
+insert clothing shirt 10 1 -1
 insert clothing shirt 20.50 1 1
 insert electronics PS3 300 1 5.2 F NM
 insert electronics PS4 400 1 5 F TX
